@@ -8,6 +8,7 @@ class DevDashboard extends Component {
     return (
       <div>
         <h1>Welcome {this.props.user.type}</h1>
+        <Link to='/open-reports'>Open reports</Link>
       </div>
     )
   }

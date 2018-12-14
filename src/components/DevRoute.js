@@ -3,6 +3,11 @@ import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
 const DevRoute = ({ component: Component, user, ...rest}) => {
+  if(!user){
+    return <Redirect
+    to= "/"
+  />
+  }
   return (
     <Route
       {...rest}

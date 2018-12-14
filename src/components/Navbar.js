@@ -9,11 +9,25 @@ class Navbar extends Component {
       <ul>
         <li onClick={this.props.logout}>Logout</li>
         { this.props.user.type === 'hacker' ? (
-            <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
+             this.props.location.pathname === '/dashboard-hacker' ? (
+              <div>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/'>Account</Link></li>
+              </div>
+            ) : (
+              <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
+            ) 
           ) : (
-            <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+            this.props.location.pathname === '/dashboard-dev' ? (
+              <div>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/'>Account</Link></li>
+              </div>
+            ) : (
+              <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+            )
           ) }
-        <li><Link to='/'>Account</Link></li>
+        
       </ul>
     </div>
   }

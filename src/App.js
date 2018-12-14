@@ -16,6 +16,8 @@ import DevRoute from './components/DevRoute';
 import DevDashboard from './pages/DevDashboard';
 import HackerReports from './pages/HackerReports';
 import CreateReport from './pages/CreateReport';
+import DevReports from './pages/DevReports';
+import Report from './pages/ViewReport';
 
 class App extends Component {
   render() {
@@ -32,6 +34,8 @@ class App extends Component {
               <HackerRoute path="/my-reports" component={HackerReports} />
               <HackerRoute path="/new-report" component={CreateReport} />
               <DevRoute path="/dashboard-dev" component={DevDashboard} />
+              <DevRoute path="/open-reports" component={DevReports} />
+              <PrivateRoute path="/report/:id" component={Report} />
               <Route path="" component={NotFound}/>
           </Switch>
         </div>

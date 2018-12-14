@@ -13,6 +13,16 @@ class Report {
     return this.auth.post('/reports', {title, dev, description})
       .then(({ data }) => {console.log(data)});
   }
+
+  getList(){
+    return this.auth.get('/reports')
+      .then(({ data}) => data);
+  }
+
+  getReport(reportId){
+    return this.auth.get('/reports/'+reportId)
+      .then(({data}) => data);
+  }
 }
 
 const report = new Report();

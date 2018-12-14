@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import report from '../lib/report-service'
 
-class HackerReports extends Component {
+class DevReports extends Component {
 
   state = {
     reportList: []
@@ -29,7 +29,7 @@ class HackerReports extends Component {
 
     return (
       <div>
-        <h1>My reports</h1>
+        <h1>Open Reports</h1>
         <ul>
           {reportList}
         </ul>
@@ -38,4 +38,4 @@ class HackerReports extends Component {
   }
 }
 
-export default withAuth(HackerReports);
+export default withAuth(DevReports);
