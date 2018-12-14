@@ -23,6 +23,11 @@ class Report {
     return this.auth.get('/reports/'+reportId)
       .then(({data}) => data);
   }
+
+  removeReport(reportId){
+    return this.auth.delete('/reports/'+reportId)
+      .then(({data})=> console.log(data))
+  }
 }
 
 const report = new Report();
