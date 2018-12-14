@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
 class Navbar extends Component {
@@ -8,8 +8,11 @@ class Navbar extends Component {
     return <div>
       <ul>
         <li onClick={this.props.logout}>Logout</li>
-        <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
-        <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+        { this.props.user.type === 'hacker' ? (
+            <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
+          ) : (
+            <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+          ) }
         <li><Link to='/'>Account</Link></li>
       </ul>
     </div>
@@ -34,4 +37,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
+export default withRouter(withAuth(Navbar));

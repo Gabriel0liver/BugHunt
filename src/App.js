@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Navbar from './components/Navbar';
 import HackerDashboard from './pages/HackerDashboard';
@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <Navbar />
+          <Navbar></Navbar>
           <Switch>
               <Route exact path="/" component={Home} />
               <AnonRoute  path="/signup-hacker" component={SignupHacker} />
