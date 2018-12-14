@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
+
 class Navbar extends Component {
 
   renderIsLoggedIn = () => {
     return <div>
-      <p>username: {this.props.user.username}</p>
-      <p onClick={this.props.logout}>Logout</p>
+      <ul>
+        <li onClick={this.props.logout}>Logout</li>
+        <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
+        <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+        <li><Link to='/'>Account</Link></li>
+      </ul>
     </div>
   }
 
   renderIsNotLoggedIn = () => {
     return <div>
-      <Link to='/login'>Login</Link>
-      <Link to='/signup'>Signup</Link>
+      <ul>
+        <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/signup-hacker'>Signup as a hacker</Link></li>
+        <li><Link to='/signup-dev'>Signup as a as developer</Link></li>
+      </ul>
     </div>
   }
 

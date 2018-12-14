@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import auth from '../lib/auth-service';
 import { withAuth } from '../providers/AuthProvider';
-class Login extends Component {
+
+class Signup extends Component {
+
   state = {
     username: "",
     password: "",
-  }
+  };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { username, password } = this.state
+    const username = this.state.username;
+    const password = this.state.password;
 
-    auth.login({ username, password })
-    .then( (user) => {
-      this.props.setUser(user);
-    })
-    .catch( error => console.log(error) )
+    auth.signup({ username, password },'hacker')
+      .then( (user) => {
+        this.setState({
+            username: "",
+            password: "",
+        });
+        this.props.setUser(user)
+      })
+      .catch( error => console.log(error) )
   }
 
   handleChange = (event) => {  
@@ -24,12 +32,12 @@ class Login extends Component {
   }
 
   render() {
-  const { username, password } = this.state;
+    const { username, password } = this.state;
     return (
       <div>
-        <h2>Log in</h2>
+        <h2>Sign up as a hacker</h2>
         <form onSubmit={this.handleFormSubmit}>
-          < div>
+          <div>
             <label>Username:</label>
             <input type="text" name="username" value={username} onChange={this.handleChange}/>
           </div>
@@ -37,11 +45,16 @@ class Login extends Component {
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Signup" />
         </form>
+
+        <p>Already have account? 
+          <Link to={"/login"}> Login</Link>
+        </p>
+
       </div>
     )
   }
 }
 
-export default withAuth(Login);
+export default withAuth(Signup);

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
-class Home extends Component {
-
+class DevDashboard extends Component {
   render() {
+    
     return (
-        <div>
-          <h1>Bug Hunt</h1>
+      <div>
+        <h1>Welcome {this.props.user.type}</h1>
       </div>
-    );
+    )
   }
 }
 
-export default withAuth(Home);
+export default withAuth(DevDashboard);

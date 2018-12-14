@@ -29,7 +29,7 @@ class AuthProvider extends Component {
   state = {
     user: null,
     isLogged: false,
-    isLoading: true
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -77,7 +77,7 @@ class AuthProvider extends Component {
         user: this.state.user,
         isLogged: this.state.isLogged,
         setUser: this.handleSetUser,
-        logout: this.logoutUser,
+        logout: this.logoutUser
       }}>
         {this.props.children}
       </Provider>

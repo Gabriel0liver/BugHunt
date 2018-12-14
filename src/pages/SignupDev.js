@@ -15,7 +15,7 @@ class Signup extends Component {
     const username = this.state.username;
     const password = this.state.password;
 
-    auth.signup({ username, password })
+    auth.signup({ username, password }, 'dev')
       .then( (user) => {
         this.setState({
             username: "",
@@ -35,11 +35,16 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+        <h2>Sign up as a dev</h2>
+        <form onSubmit={this.handleFormSubmit} className="signup">
+          <div>
+            <label>Username:</label>
+            <input type="text" name="username" value={username} onChange={this.handleChange}/>
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={this.handleChange} />
+          </div>
           <input type="submit" value="Signup" />
         </form>
 
