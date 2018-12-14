@@ -15,7 +15,11 @@ class Login extends Component {
     .then( (user) => {
       this.props.setUser(user);
     })
-    .catch( error => console.log(error) )
+    .catch( error => {
+      this.setState({
+        error: error.response.data.error
+      })
+    })
   }
 
   handleChange = (event) => {  
@@ -24,21 +28,22 @@ class Login extends Component {
   }
 
   render() {
-  const { username, password } = this.state;
+  const { username, password, error } = this.state;
     return (
       <div>
         <h2>Log in</h2>
         <form onSubmit={this.handleFormSubmit}>
           < div>
-            <label>Username:</label>
-            <input type="text" name="username" value={username} onChange={this.handleChange}/>
+            <label className="label">Username</label>
+            <input className="input" type="text" name="username" value={username} onChange={this.handleChange}/>
           </div>
           <div>
-            <label>Password:</label>
-            <input type="password" name="password" value={password} onChange={this.handleChange} />
+            <label className="label">Password</label>
+            <input className="input" type="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <input type="submit" value="Login" />
+          <input className="button" type="submit" value="Login" />
         </form>
+        <p>{error}</p>
       </div>
     )
   }

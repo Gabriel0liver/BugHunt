@@ -8,6 +8,7 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    error: null
   };
 
   handleFormSubmit = (event) => {
@@ -23,7 +24,11 @@ class Signup extends Component {
         });
         this.props.setUser(user)
       })
-      .catch( error => console.log(error) )
+      .catch( error => {
+        this.setState({
+          error: error.response.data.error
+        })
+      } )
   }
 
   handleChange = (event) => {  
@@ -32,7 +37,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, error} = this.state;
     return (
       <div>
         <h2>Sign up as a dev</h2>
@@ -51,6 +56,8 @@ class Signup extends Component {
         <p>Already have account? 
           <Link to={"/login"}> Login</Link>
         </p>
+
+        <p>{error}</p>
 
       </div>
     )

@@ -28,6 +28,11 @@ class Report {
     return this.auth.delete('/reports/'+reportId)
       .then(({data})=> console.log(data))
   }
+
+  changeReportStatus(reportId,newStatus){
+    return this.auth.patch('/reports/'+reportId, {newStatus})
+      .then(({data})=> console.log(data))
+  }
 }
 
 const report = new Report();

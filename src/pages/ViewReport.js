@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 import { Redirect } from 'react-router-dom';
-import reportSerivce from '../lib/report-service';
+import reportService from '../lib/report-service';
 
 class Report extends Component {
 
@@ -11,7 +11,7 @@ class Report extends Component {
 	}
 
 	componentDidMount(){
-		reportSerivce.getReport(this.props.match.params.id)
+		reportService.getReport(this.props.match.params.id)
 			.then(response => {
 				this.setState({
 					report: response
@@ -19,16 +19,16 @@ class Report extends Component {
 			})
 	}
 
-	handleClose(){
-
+	handleClose = () =>{
+		reportService.changeReportStatus(this.props.match.params.id,'closed')
 	}
 
-	handleReject(){
-
+	handleReject = () =>{
+		reportService.changeReportStatus(this.props.match.params.id,'rejected')
 	}
 
 	handleRemove = () => {
-		reportSerivce.removeReport(this.props.match.params.id)
+		reportService.removeReport(this.props.match.params.id)
 			.then(()=>{
 				this.setState({
 					removed: true
@@ -37,7 +37,6 @@ class Report extends Component {
 	}
 
 	handleUser(){
-		console.log(this.props)
 		if(this.state.removed){
 			return <Redirect to='/my-reports' />
 		}

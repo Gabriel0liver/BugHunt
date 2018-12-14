@@ -9,7 +9,8 @@ class CreateReport extends Component {
 		title: "",
 		dev: "",
 		description: "",
-		redirect: false
+		redirect: false,
+		error: null
 	}
 	
 
@@ -26,7 +27,11 @@ class CreateReport extends Component {
 						redirect: true
 					})
 				})
-			.catch( error => console.log(error) )
+			.catch( error => {
+        this.setState({
+          error: error.response.data.error
+				})
+			})
 	}
 
 	handleChange = (event) => {  
@@ -35,7 +40,7 @@ class CreateReport extends Component {
 	}
 
   render() {
-		const { title, dev, description, redirect } = this.state;
+		const { title, dev, description, redirect, error } = this.state;
 		if (redirect) {
 			console.log('hey')
 			return (<Redirect to="/" />)
@@ -58,6 +63,7 @@ class CreateReport extends Component {
         </div>
         <input type="submit" value="Submit" />
         </form>
+				<p>{error}</p>
       </div>
     )
   }
