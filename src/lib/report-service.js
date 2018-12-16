@@ -29,8 +29,8 @@ class Report {
       .then(({data})=> console.log(data))
   }
 
-  changeReportStatus(reportId,newStatus){
-    return this.auth.patch('/reports/'+reportId, {newStatus})
+  changeReportStatus(reportId,newStatus,comment){
+    return this.auth.patch('/reports/'+reportId, {newStatus,comment})
       .then(({data})=> console.log(data))
   }
 }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import report from '../lib/report-service'
 
-class DevReports extends Component {
+class HackerReportsOpen extends Component {
 
   state = {
     reportList: []
@@ -18,7 +18,7 @@ class DevReports extends Component {
           return report.status === 'open'
         }) 
         const reportList = openReports.map(report => {
-          return <li key={report._id} className="panel-block"><Link to={`/report/${report._id}`}>{report.title}</Link></li>
+          return <li key={report._id} class="panel-block"><Link to={`/report/${report._id}`}>{report.title}</Link></li>
         })
         this.setState({
           reportList
@@ -32,7 +32,7 @@ class DevReports extends Component {
 
     return (
       <div>
-        <h1>Open Reports</h1>
+        <h1>My open reports</h1>
         <div className="panel">
           {reportList}
         </div>
@@ -41,4 +41,4 @@ class DevReports extends Component {
   }
 }
 
-export default withAuth(DevReports);
+export default withAuth(HackerReportsOpen);

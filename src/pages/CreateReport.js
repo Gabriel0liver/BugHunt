@@ -40,7 +40,7 @@ class CreateReport extends Component {
   render() {
 		const { title, dev, description, redirect, error } = this.state;
 		if (redirect) {
-			return (<Redirect to="/" />)
+			return (<Redirect to="/dashboard-hacker" />)
 		} 
     return (
       <div>

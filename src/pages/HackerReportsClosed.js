@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import report from '../lib/report-service'
 
-class HackerReports extends Component {
+class HackerReportsClosed extends Component {
 
   state = {
     reportList: []
@@ -14,7 +14,10 @@ class HackerReports extends Component {
     report.getList()
       .then((reports) => {
         console.log(reports)
-        const reportList = reports.map(report => {
+        const closedReports = reports.filter(report => {
+          return report.status === 'closed'
+        }) 
+        const reportList = closedReports.map(report => {
           return <li key={report._id} class="panel-block"><Link to={`/report/${report._id}`}>{report.title}</Link></li>
         })
         this.setState({
@@ -29,7 +32,7 @@ class HackerReports extends Component {
 
     return (
       <div>
-        <h1>My reports</h1>
+        <h1>My closed reports</h1>
         <div className="panel">
           {reportList}
         </div>
@@ -38,4 +41,4 @@ class HackerReports extends Component {
   }
 }
 
-export default withAuth(HackerReports);
+export default withAuth(HackerReportsClosed);

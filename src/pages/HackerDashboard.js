@@ -7,9 +7,9 @@ class HackerDashboard extends Component {
     return (
       <div>
         <h1 className="title is-2">Dashboard</h1>
-        <Link to='/my-reports'>My open reports</Link>
-        <Link to='/'>My closed reports</Link>
-        <Link to='/'>My rejected reports</Link>
+        <Link to='/my-reports-open'>My open reports</Link>
+        <Link to='/my-reports-closed'>My closed reports</Link>
+        <Link to='/my-reports-rejected'>My rejected reports</Link>
         <Link to='/websites'>Websites</Link>
         <Link to='/'>Chats</Link>
         <Link to='/'>Leaderboards</Link>
