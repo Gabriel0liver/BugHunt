@@ -15,7 +15,7 @@ class HackerReports extends Component {
       .then((reports) => {
         console.log(reports)
         const reportList = reports.map(report => {
-          return <li key={report._id}><Link to={`/report/${report._id}`}>{report.title}</Link></li>
+          return <li key={report._id} class="panel-block"><Link to={`/report/${report._id}`}>{report.title}</Link></li>
         })
         this.setState({
           reportList
@@ -30,9 +30,9 @@ class HackerReports extends Component {
     return (
       <div>
         <h1>My reports</h1>
-        <ul>
+        <div className="panel">
           {reportList}
-        </ul>
+        </div>
       </div>
     )
   }

@@ -14,6 +14,7 @@ html {
 h1, h2{
     text-align: center;
     margin: 20px;
+    font-size: 2em;
 }
 
 h2{
@@ -27,4 +28,18 @@ form{
 
 .button{
     margin: 20px 0;
+}
+
+.alert{
+    margin-top: 20px;
+    color: hsl(348, 100%, 61%);
+}
+
+p{
+    margin-bottom: 10px;    
+}
+
+.description{
+    width: 80%;
+    margin: 0 auto;
 }

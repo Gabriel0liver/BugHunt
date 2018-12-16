@@ -18,6 +18,10 @@ import HackerReports from './pages/HackerReports';
 import CreateReport from './pages/CreateReport';
 import DevReports from './pages/DevReports';
 import Report from './pages/ViewReport';
+import MyWebsites from './pages/MyWebsites';
+import Website from './pages/Website';
+import AllWebsites from './pages/AllWebsites';
+import AddWebsite from './pages/AddWebsite';
 
 class App extends Component {
   render() {
@@ -32,10 +36,14 @@ class App extends Component {
               <AnonRoute path="/login" component={Login} />
               <HackerRoute path="/dashboard-hacker" component={HackerDashboard} />
               <HackerRoute path="/my-reports" component={HackerReports} />
-              <HackerRoute path="/new-report" component={CreateReport} />
+              <HackerRoute path="/new-report/:websiteId" component={CreateReport} />
+              <HackerRoute path="/websites" component={AllWebsites} />
               <DevRoute path="/dashboard-dev" component={DevDashboard} />
               <DevRoute path="/open-reports" component={DevReports} />
+              <DevRoute path="/my-websites" component={MyWebsites} />
+              <DevRoute path="/add-website" component={AddWebsite} />
               <PrivateRoute path="/report/:id" component={Report} />
+              <PrivateRoute path="/website/:id" component={Website} />
               <Route path="" component={NotFound}/>
           </Switch>
         </div>

@@ -9,8 +9,8 @@ class Report {
   }
 
   create(report) {
-    const { title, dev, description } = report;
-    return this.auth.post('/reports', {title, dev, description})
+    const { title, website, description } = report;
+    return this.auth.post('/reports', {title, website, description})
       .then(({ data }) => {console.log(data)});
   }
 

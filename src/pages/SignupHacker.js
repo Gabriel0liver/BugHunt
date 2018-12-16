@@ -42,23 +42,23 @@ class Signup extends Component {
       <div>
           <h2>Sign up as a hacker</h2>
         <form onSubmit={this.handleFormSubmit}>
-          <div>
-            <label>Username:</label>
-            <input type="text" name="username" value={username} onChange={this.handleChange}/>
+        < div>
+            <label className="label">Username</label>
+            <input className="input" type="text" name="username" value={username} onChange={this.handleChange}/>
           </div>
           <div>
-            <label>Password:</label>
-            <input type="password" name="password" value={password} onChange={this.handleChange} />
+            <label className="label">Password</label>
+            <input className="input" type="password" name="password" value={password} onChange={this.handleChange} />
           </div>
-          <input type="submit" value="Signup" />
+          <input className="button" type="submit" value="Signup" />
+
+          <p>Already have account? 
+          <Link to={"/login"}> Login</Link>
+          </p>
+
+          <p className="alert">{error}</p>
+
         </form>
-
-        <p>Already have account? 
-        <Link to={"/login"}> Login</Link>
-        </p>
-
-        <p>{error}</p>
-
       </div>
     )
   }

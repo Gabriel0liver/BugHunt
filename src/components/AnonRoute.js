@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
-const AnonRoute = ({ component: Component, isLogged, setUser, ...rest }) => {
+const AnonRoute = ({ component: Component, isLogged, user, setUser, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -10,7 +10,10 @@ const AnonRoute = ({ component: Component, isLogged, setUser, ...rest }) => {
         if (!isLogged) {
           return <Component {...props} setUser={setUser} />
         } else {
-          return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+          if(user.type === 'hacker'){
+            return <Redirect to={{ pathname: '/dashboard-hacker', state: { from: props.location } }} />
+          }
+          return <Redirect to={{ pathname: '/dashboard-dev', state: { from: props.location } }} />
         }
       }
       }

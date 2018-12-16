@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import report from '../lib/report-service';
+import website from '../lib/website-service';
 import { withAuth } from '../providers/AuthProvider';
 
-class CreateReport extends Component {
+class AddWebsite extends Component {
 
 	state = {
 		title: "",
-		description: "",
+		url: "",
 		redirect: false,
 		error: null
 	}
@@ -16,10 +16,9 @@ class CreateReport extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
     const title = this.state.title;
-		const website = this.props.match.params.websiteId;
-		const description = this.state.description;
+		const url = this.state.url;
 
-		report.create({ title, website, description })
+		website.create({ title, url })
       .then( () => {
 					this.setState({
 						redirect: true
@@ -38,21 +37,21 @@ class CreateReport extends Component {
 	}
 
   render() {
-		const { title, dev, description, redirect, error } = this.state;
+		const { title, url, redirect, error } = this.state;
 		if (redirect) {
-			return (<Redirect to="/" />)
+			return (<Redirect to="/dashboard-dev" />)
 		} 
     return (
       <div>
-        <h1>Open a new report for "website name"</h1>
+        <h1>Add a website</h1>
         <form onSubmit={this.handleSubmit}>
         <div>
         	<label className="label">Title</label>
         	<input className="input" type="text" name="title" value={title} onChange={this.handleChange}/>
         </div>
         <div>
-					<label className="label">Description</label>
-        	<input className="textarea" type="textarea" name="description" value={description} onChange={this.handleChange}/>
+					<label className="label">Url</label>
+        	<input className="input" type="text" name="url" value={url} onChange={this.handleChange}/>
         </div>
         <input className="button" type="submit" value="Submit" />
 
@@ -65,4 +64,4 @@ class CreateReport extends Component {
   }
 }
 
-export default withAuth(CreateReport);
+export default withAuth(AddWebsite);
