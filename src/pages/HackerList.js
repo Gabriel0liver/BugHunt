@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import hackerService from '../lib/hacker-service'
+import chatService from '../lib/chat-service'
 
 class AllWebsites extends Component {
 
@@ -26,6 +27,13 @@ class AllWebsites extends Component {
     this.setState({[name]: value});
   }
 
+  handleOpenChat = (hackerId) => {
+    chatService.create(hackerId)
+      .then(()=>{
+        
+      })
+  }
+
   render() {
 
     const searchFiltered = this.state.hackerList.filter(hacker => {
@@ -33,7 +41,7 @@ class AllWebsites extends Component {
     })
 
     const hackerList = searchFiltered.map(hacker =>{
-      return <li key={hacker._id}>{hacker.username}<Link to={`/hacker/${hacker._id}`}>Open chat</Link></li>
+      return <li key={hacker._id}><p>{hacker.username}</p><p onClick={this.handleOpenChat(hacker._id)}>Open chat</p></li>
     })
 
     return (
