@@ -7,7 +7,8 @@ import chatService from '../lib/chat-service'
 class Chat extends Component {
 
   state={
-    message:""
+    message:"",
+    messageList: []
   }
 
   componentDidMount(){
@@ -25,12 +26,18 @@ class Chat extends Component {
   }
 
   handleGetMessages = () => {
-    
     chatService.getMessages(this.props.match.params.id)
-      .then(data => console.log(data))
+      .then(messageList => {
+        this.setState({
+          messageList
+        })
+      })
   }
 
   render() {
+
+    console.log(this.props.messageList)
+
     return (
       <div>
         <input type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
