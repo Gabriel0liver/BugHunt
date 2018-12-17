@@ -10,8 +10,19 @@ class Chat {
 
   create(hackerId) {
     return this.chat.post('/chats', {hackerId})
-      .then(({ data }) => {console.log(data)});
+      .then(({ data }) => data);
   }
+
+  getMessages(chatId) {
+    return this.chat.get(`/chats/${chatId}`)
+      .then(({ data }) => data);
+  }
+
+  postMessage(chatId, message) {
+    return this.chat.post(`/chats/${chatId}`, {message})
+    .then(({ data }) => data);
+  }
+
 }
 
 const chat = new Chat();

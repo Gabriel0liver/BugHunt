@@ -27,10 +27,10 @@ class AllWebsites extends Component {
     this.setState({[name]: value});
   }
 
-  handleOpenChat = (hackerId) => {
-    chatService.create(hackerId)
+  handleOpenChat = (hacker) => {
+    chatService.create(hacker)
       .then(()=>{
-        
+
       })
   }
 
@@ -41,7 +41,9 @@ class AllWebsites extends Component {
     })
 
     const hackerList = searchFiltered.map(hacker =>{
-      return <li key={hacker._id}><p>{hacker.username}</p><p onClick={this.handleOpenChat(hacker._id)}>Open chat</p></li>
+      return <li key={hacker._id}><p>{hacker.username}</p><p onClick={() => {
+        this.handleOpenChat(hacker._id)
+      }}>Open chat</p></li>
     })
 
     return (

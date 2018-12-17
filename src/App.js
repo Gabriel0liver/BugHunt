@@ -27,6 +27,7 @@ import Website from './pages/Website';
 import AllWebsites from './pages/AllWebsites';
 import AddWebsite from './pages/AddWebsite';
 import HackerList from './pages/HackerList';
+import Chat from './pages/Chat';
 
 class App extends Component {
   render() {
@@ -52,6 +53,7 @@ class App extends Component {
               <DevRoute path="/my-websites" component={MyWebsites} />
               <DevRoute path="/add-website" component={AddWebsite} />
               <DevRoute path="/hackers" component={HackerList} />
+              <PrivateRoute path="/chats/:id" component={Chat}/>
               <PrivateRoute path="/report/:id" component={Report} />
               <PrivateRoute path="/website/:id" component={Website} />
               <Route path="" component={NotFound}/>
