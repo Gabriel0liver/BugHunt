@@ -4,6 +4,8 @@ import { withAuth } from '../providers/AuthProvider';
 import hackerService from '../lib/hacker-service'
 import chatService from '../lib/chat-service'
 
+import socketManagerClient from "../socketManagerClient";
+
 class Chat extends Component {
 
   state={
@@ -13,6 +15,12 @@ class Chat extends Component {
 
   componentDidMount(){
     this.handleGetMessages();
+    socketManagerClient.initSocketUser(this.props.match.params.id);
+    let socket = socketManagerClient.getSocket();
+    socket.on("NEW_MESSAGE", () => {
+       console.log('ndsjnjds')
+       this.handleGetMessages();
+    });
   }
 
   handleChange = (event) =>{
@@ -22,7 +30,9 @@ class Chat extends Component {
 
   handleSendMessage = () => {
     chatService.postMessage(this.props.match.params.id, this.state.message)
-      .then((data) => data)
+      .then((data) => {
+        
+      })
   }
 
   handleGetMessages = () => {
@@ -36,7 +46,7 @@ class Chat extends Component {
 
   render() {
 
-    console.log(this.props.messageList)
+    console.log(this.state.messageList)
 
     return (
       <div>
