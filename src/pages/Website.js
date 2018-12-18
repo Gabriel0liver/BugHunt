@@ -13,7 +13,6 @@ class MyWebsites extends Component {
   componentDidMount(){
     websiteService.getWebsite(this.props.match.params.id)
       .then(website => {
-        console.log(website)
         this.setState({
           website
         })

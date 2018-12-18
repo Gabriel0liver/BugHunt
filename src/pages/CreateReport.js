@@ -52,7 +52,7 @@ class CreateReport extends Component {
         </div>
         <div>
 					<label className="label">Description</label>
-        	<input className="textarea" type="textarea" name="description" value={description} onChange={this.handleChange}/>
+        	<textarea className="textarea" type="textarea" name="description" rows="10" value={description} onChange={this.handleChange}/>
         </div>
         <input className="button" type="submit" value="Submit" />
 

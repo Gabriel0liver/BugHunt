@@ -26,7 +26,7 @@ class Report {
 
   removeWebsite(websiteId){
     return this.auth.delete('/websites/'+websiteId)
-      .then(({data})=> console.log(data))
+      .then(({data})=> data)
   }
   
 }

@@ -11,7 +11,7 @@ class Report {
   create(report) {
     const { title, website, description } = report;
     return this.auth.post('/reports', {title, website, description})
-      .then(({ data }) => {console.log(data)});
+      .then(({ data }) => data);
   }
 
   getList(){
@@ -26,12 +26,12 @@ class Report {
 
   removeReport(reportId){
     return this.auth.delete('/reports/'+reportId)
-      .then(({data})=> console.log(data))
+      .then(({data})=> data)
   }
 
   changeReportStatus(reportId,newStatus,comment){
     return this.auth.patch('/reports/'+reportId, {newStatus,comment})
-      .then(({data})=> console.log(data))
+      .then(({data})=> data)
   }
 }
 

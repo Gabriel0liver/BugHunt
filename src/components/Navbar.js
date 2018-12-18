@@ -5,41 +5,37 @@ import { withAuth } from '../providers/AuthProvider';
 class Navbar extends Component {
 
   renderIsLoggedIn = () => {
-    return <div>
-      <ul>
-        <li onClick={this.props.logout}>Logout</li>
+    return <nav className="navbar is-light" role="navigation" aria-label="main navigation">
+    <div className="navbar-brand">
+        
         { this.props.user.type === 'hacker' ? (
              this.props.location.pathname === '/dashboard-hacker' ? (
-              <div>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/'>Account</Link></li>
-              </div>
+              <Link className="navbar-item" to='/'>Home</Link>
             ) : (
-              <li><Link to='/dashboard-hacker'>Dashboard</Link></li>
+              <Link className="navbar-item" to='/dashboard-hacker'>Dashboard</Link>
             ) 
           ) : (
             this.props.location.pathname === '/dashboard-dev' ? (
-              <div>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/'>Account</Link></li>
-              </div>
+              <Link className="navbar-item" to='/'>Home</Link>
             ) : (
-              <li><Link to='/dashboard-dev'>Dashboard</Link></li>
+              <Link className="navbar-item" to='/dashboard-dev'>Dashboard</Link>
             )
           ) }
-        
-      </ul>
+        <div className="navbar-item" onClick={this.props.logout}>Logout</div>
     </div>
+    </nav>
   }
 
   renderIsNotLoggedIn = () => {
-    return <div>
-      <ul>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/signup-hacker'>Signup as a hacker</Link></li>
-        <li><Link to='/signup-dev'>Signup as a as developer</Link></li>
-      </ul>
+    return <nav className="navbar is-light" role="navigation" aria-label="main navigation">
+    <div className="navbar-brand">
+      <Link className="navbar-item" to='/login'>Login</Link>
+      <div className="end-navbar">
+          <Link className="navbar-item navvv" to='/signup-hacker'>Signup as a hacker</Link>
+          <Link className="navbar-item navvv" to='/signup-dev'>Signup as a dev</Link>
+      </div>
     </div>
+    </nav>
   }
 
   render() {

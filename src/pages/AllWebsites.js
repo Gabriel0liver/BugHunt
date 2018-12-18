@@ -38,8 +38,7 @@ class AllWebsites extends Component {
     return (
       <div>
         <h1>Websites</h1>
-        <label>Search:</label>
-        <input type="text" name="search" onChange={this.handleChange} value={this.state.search}/>
+        <input type="text" name="search"  placeholder="Search for a website..." className="input is-rounded"onChange={this.handleChange} value={this.state.search}/>
         <ul>
           {websiteList}
         </ul>

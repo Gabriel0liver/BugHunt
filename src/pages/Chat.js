@@ -5,12 +5,14 @@ import hackerService from '../lib/hacker-service'
 import chatService from '../lib/chat-service'
 
 import socketManagerClient from "../socketManagerClient";
+import { format } from 'util';
 
 class Chat extends Component {
 
   state={
     message:"",
-    messageList: []
+    messageList: [],
+    firstGet: true
   }
 
   componentDidMount(){
@@ -18,7 +20,6 @@ class Chat extends Component {
     socketManagerClient.initSocketUser(this.props.match.params.id);
     let socket = socketManagerClient.getSocket();
     socket.on("NEW_MESSAGE", () => {
-       console.log('ndsjnjds')
        this.handleGetMessages();
     });
   }
@@ -31,6 +32,9 @@ class Chat extends Component {
   handleSendMessage = () => {
     chatService.postMessage(this.props.match.params.id, this.state.message)
       .then((data) => {
+        this.setState({
+          message: ""
+        })
         
       })
   }
@@ -41,15 +45,39 @@ class Chat extends Component {
         this.setState({
           messageList
         })
+        if(!this.state.firstGet){
+          this.messagesEnd.scrollIntoView({behavior: "smooth"});
+        }else{
+          this.messagesEnd.scrollIntoView();
+          this.setState({
+            firstGet: false
+          })
+        }
       })
   }
 
   render() {
 
-    console.log(this.state.messageList)
+    const formatedMessages = this.state.messageList.map(message => {
+      if(this.props.user.type === message.type){
+        return <li className="right-message">{message.text}</li>
+      }else{
+        return <li className="left-message">{message.text}</li>
+      }
+      
+    })
 
     return (
       <div>
+        <div className="message-box">
+          <div>
+          {formatedMessages}
+          </div>
+          
+          <div style={{ float:"left", clear: "both" }}
+             ref={(el) => { this.messagesEnd = el; }}>
+          </div>
+        </div>
         <input type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
         <button onClick={this.handleSendMessage}>Send message</button>
       </div>

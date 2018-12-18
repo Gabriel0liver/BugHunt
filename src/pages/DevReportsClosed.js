@@ -13,7 +13,6 @@ class DevReportsClosed extends Component {
     
     report.getList()
       .then((reports) => {
-        console.log(reports)
         const closedReports = reports.filter(report => {
           return report.status === 'closed'
         }) 

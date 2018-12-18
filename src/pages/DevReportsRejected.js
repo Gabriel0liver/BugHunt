@@ -13,7 +13,6 @@ class DevReportsRejected extends Component {
     
     report.getList()
       .then((reports) => {
-        console.log(reports)
         const rejectedReports = reports.filter(report => {
           return report.status === 'rejected'
         }) 

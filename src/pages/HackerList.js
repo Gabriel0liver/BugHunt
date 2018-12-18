@@ -14,7 +14,6 @@ class AllWebsites extends Component {
   componentDidMount(){
     hackerService.getList()
       .then(hackerList => {
-        console.log(hackerList)
         this.setState({
           hackerList
         })

@@ -66,7 +66,7 @@ class AuthProvider extends Component {
           user: null,
         });
       })
-      .catch( error => console.log(error))
+      .catch( error => (error))
   }
 
   render() {

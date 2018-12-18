@@ -43,3 +43,54 @@ p{
     width: 80%;
     margin: 0 auto;
 }
+
+.end-navbar{
+    display: flex;
+}
+
+.navvv {
+    width: 100px;
+}
+
+.navbar-brand{
+    display: flex;
+    justify-content: space-between 
+}
+
+.report-description{
+    padding: 10px 10px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    margin-bottom: 20px
+}
+
+.title1{
+    
+    text-align: center
+}
+
+.button{
+    margin: 0
+}
+
+.card-header{
+    
+    display: inline;
+}
+
+
+.card{
+    padding-top: 20px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.right-message{
+    text-align: right;
+}
+
+.message-box{
+    height: 550px;
+    overflow: auto;
+}

@@ -20,7 +20,12 @@ class Chat {
 
   postMessage(chatId, message) {
     return this.chat.post(`/chats/${chatId}`, {message})
-    .then(({ data }) => data);
+      .then(({ data }) => data);
+  }
+
+  getChats(userId) {
+    return this.chat.get('/chats', {userId})
+      .then(({data}) => data)
   }
 
 }
