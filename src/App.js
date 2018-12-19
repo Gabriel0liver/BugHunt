@@ -22,9 +22,8 @@ import DevReportsOpen from './pages/DevReportsOpen';
 import DevReportsClosed from './pages/DevReportsClosed';
 import DevReportsRejected from './pages/DevReportsRejected';
 import Report from './pages/ViewReport';
-import MyWebsites from './pages/MyWebsites';
 import Website from './pages/Website';
-import AllWebsites from './pages/AllWebsites';
+import Websites from './pages/Websites';
 import AddWebsite from './pages/AddWebsite';
 import HackerList from './pages/HackerList';
 import Chat from './pages/Chat';
@@ -46,14 +45,13 @@ class App extends Component {
               <HackerRoute path="/my-reports-closed" component={HackerReportsClosed} />
               <HackerRoute path="/my-reports-rejected" component={HackerReportsRejected} />
               <HackerRoute path="/new-report/:websiteId" component={CreateReport} />
-              <HackerRoute path="/websites" component={AllWebsites} />
               <DevRoute path="/dashboard-dev" component={DevDashboard} />
               <DevRoute path="/open-reports" component={DevReportsOpen} />
               <DevRoute path="/closed-reports" component={DevReportsClosed} />
               <DevRoute path="/rejected-reports" component={DevReportsRejected} />
-              <DevRoute path="/my-websites" component={MyWebsites} />
               <DevRoute path="/add-website" component={AddWebsite} />
               <DevRoute path="/hackers" component={HackerList} />
+              <PrivateRoute path="/websites" component={Websites} />
               <PrivateRoute exact path="/chats" component={ChatList}/>
               <PrivateRoute path="/chats/:id" component={Chat}/>
               <PrivateRoute path="/report/:id" component={Report} />

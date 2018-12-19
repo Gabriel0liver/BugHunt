@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import website from '../lib/website-service'
 
-class AllWebsites extends Component {
+class Websites extends Component {
 
   state={
     websiteList: [],
@@ -47,4 +47,4 @@ class AllWebsites extends Component {
   }
 }
 
-export default withAuth(AllWebsites);
+export default withAuth(Websites);

@@ -40,18 +40,15 @@ class Chat extends Component {
   }
 
   handleGetMessages = () => {
+
     chatService.getMessages(this.props.match.params.id)
       .then(messageList => {
         this.setState({
           messageList
         })
-        if(!this.state.firstGet){
-          this.messagesEnd.scrollIntoView({behavior: "smooth"});
-        }else{
+        console.log(this.state)
+        if(this.messagesEnd !== null){
           this.messagesEnd.scrollIntoView();
-          this.setState({
-            firstGet: false
-          })
         }
       })
   }
@@ -60,12 +57,14 @@ class Chat extends Component {
 
     const formatedMessages = this.state.messageList.map(message => {
       if(this.props.user.type === message.type){
-        return <li className="right-message">{message.text}</li>
+        return <li key={''+message.time} className="right-message">{message.text}</li>
       }else{
-        return <li className="left-message">{message.text}</li>
+        return <li key={''+message.time} className="left-message">{message.text}</li>
       }
       
     })
+
+    
 
     return (
       <div>
@@ -73,7 +72,6 @@ class Chat extends Component {
           <div>
           {formatedMessages}
           </div>
-          
           <div style={{ float:"left", clear: "both" }}
              ref={(el) => { this.messagesEnd = el; }}>
           </div>
