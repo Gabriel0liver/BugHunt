@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 import hackerService from '../lib/hacker-service'
 import chatService from '../lib/chat-service'
@@ -8,7 +8,9 @@ class AllWebsites extends Component {
 
   state={
     hackerList: [],
-    search: ""
+    search: "",
+    redirect: false,
+    chatId: null
   }
 
   componentDidMount(){
@@ -28,9 +30,18 @@ class AllWebsites extends Component {
 
   handleOpenChat = (hacker) => {
     chatService.create(hacker)
-      .then(()=>{
-
+      .then((chatId)=>{
+        this.setState({
+          chatId,
+          redirect: true
+        })
       })
+  }
+
+  handleRedirect = () =>{
+    if(this.state.redirect){
+      return <Redirect to={`/chats/${this.state.chatId}`}/>
+    }
   }
 
   render() {
@@ -53,6 +64,7 @@ class AllWebsites extends Component {
         <ul>
           {hackerList}
         </ul>
+        {this.handleRedirect()}
       </div>
     )
   }

@@ -29,7 +29,8 @@ class Chat extends Component {
     this.setState({[name]: value});
   }
 
-  handleSendMessage = () => {
+  handleSendMessage = (event) => {
+    event.preventDefault();
     chatService.postMessage(this.props.match.params.id, this.state.message)
       .then((data) => {
         this.setState({
@@ -76,8 +77,10 @@ class Chat extends Component {
              ref={(el) => { this.messagesEnd = el; }}>
           </div>
         </div>
-        <input type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
-        <button onClick={this.handleSendMessage}>Send message</button>
+        <form onSubmit={this.handleSendMessage}>
+          <input type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
+          <input className="button" type="submit" value="Send" />
+        </form>
       </div>
     )
   }

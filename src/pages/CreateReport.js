@@ -3,13 +3,16 @@ import { Redirect } from 'react-router-dom';
 import report from '../lib/report-service';
 import { withAuth } from '../providers/AuthProvider';
 
+import websiteService from '../lib/website-service';
+
 class CreateReport extends Component {
 
 	state = {
 		title: "",
 		description: "",
 		redirect: false,
-		error: null
+		error: null,
+		websiteName: ""
 	}
 	
 
@@ -37,14 +40,24 @@ class CreateReport extends Component {
 		this.setState({[name]: value});
 	}
 
+	componentDidMount(){
+		
+		websiteService.getWebsite(this.props.match.params.websiteId)
+			.then(website=>{
+				this.setState({
+					websiteName: website.title
+				})
+			})
+	}
+
   render() {
 		const { title, dev, description, redirect, error } = this.state;
 		if (redirect) {
 			return (<Redirect to="/dashboard-hacker" />)
-		} 
+		} 	
     return (
       <div>
-        <h1>Open a new report for "website name"</h1>
+        <h1>Open a new report for {this.state.websiteName}</h1>
         <form onSubmit={this.handleSubmit}>
         <div>
         	<label className="label">Title</label>

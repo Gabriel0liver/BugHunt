@@ -20,7 +20,7 @@ class MyWebsites extends Component {
   }
 
   handleReport = () => {
-    return <Redirect to={`/new-report/${this.props.match.params.id}`}/>
+    return <Redirect  to={`/new-report/${this.props.match.params.id}`}/>
   }
 
   handleRemove = () => {

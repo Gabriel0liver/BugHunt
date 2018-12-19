@@ -32,7 +32,7 @@ class Websites extends Component {
     })
 
     const websiteList = searchFiltered.map(website =>{
-      return <li key={website._id}><Link to={`/website/${website._id}`}>{website.title}</Link></li>
+      return <li key={website._id}><Link to={`/website/${website._id}`} >{website.title}</Link></li>
     })
 
     return (

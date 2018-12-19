@@ -22,7 +22,7 @@ class ChatList extends Component {
   render() {
 
     const displayList = this.state.chatList.map((chat)=>{
-      return <Link className="panel-block" to={`/chats/${chat.id}`}>{chat.username}</Link>
+      return <Link key={''+chat.id} className="panel-block" to={`/chats/${chat.id}`}>{chat.username}</Link>
     })
 
     return (
