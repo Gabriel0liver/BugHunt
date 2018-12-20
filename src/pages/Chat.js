@@ -30,6 +30,7 @@ class Chat extends Component {
     event.preventDefault();
     chatService.postMessage(this.props.match.params.id, this.state.message)
       .then((data) => {
+        console.log(data)
         const newMessageList = this.state.messageList.push(data)
         this.setState({
           message: "",
