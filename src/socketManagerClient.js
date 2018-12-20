@@ -13,7 +13,6 @@ class SocketManagerClient {
   }
   initSocketUser = (chatId) => {
     this.socket = io(socketURL + '/' + chatId);
-    console.log(this.socket)
   }
 }
 
