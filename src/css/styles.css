@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    background-color: #EFEFEF;
 }
 
 *, *:before, *:after {
@@ -15,6 +16,7 @@ h1, h2{
     text-align: center;
     margin: 20px;
     font-size: 2em;
+    color: #545454;
 }
 
 h2{
@@ -36,7 +38,9 @@ form{
 }
 
 p{
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
+    color: #545454;
+    background-color: #CAEBF2;
 }
 
 .description{
@@ -54,7 +58,8 @@ p{
 
 .navbar-brand{
     display: flex;
-    justify-content: space-between 
+    justify-content: space-between;
+    background-color: white;
 }
 
 .report-description{
@@ -87,10 +92,173 @@ label{
 }
 
 .right-message{
-    text-align: right;
+    justify-content: flex-end;
 }
 
 .message-box{
-    height: 550px;
+    height: 530px;
     overflow: auto;
+    width: 90%;
+    margin: 15px auto;
+  /*  border-top: #FF3B3F solid 2px;
+    border-bottom: #FF3B3F solid 2px; */
+}
+
+.title{
+    color: #545454;
+    padding-bottom: 20px;
+    border-bottom: #FF3B3F solid 2px;
+}
+
+.menu-label{
+    background-color: inherit;
+    color: #FF3B3F;
+    font-weight: bold;
+}
+
+aside{
+    margin: 12px;
+}
+
+.menu-list a{
+    background-color: #CAEBF2;
+}
+
+.hacker-list-item{
+    display: flex;
+    justify-content: space-between; 
+    border-bottom: #545454 solid 1px;
+    margin-bottom: 7px;
+}
+
+.hacker-list{
+    margin: 20px
+}
+
+.openChat{
+    border-radius: 5px;
+    background-color: inherit;
+    color: #FF3B3F;
+    font-weight: bold;
+}
+
+.hacker-name{
+    background-color: inherit;
+}
+
+.message-input{
+    width:80%
+}
+
+.message-button{
+    width: 20%;
+}
+
+.message-form{
+    width: 90%
+}
+
+.message-text{
+    display: flex;
+    
+}
+
+.text-message{
+    padding: 10px;
+    border-radius: 5px;
+
+    max-width: 200px;
+    word-break: break-all;
+}
+
+.left{
+    background-color: white;
+}
+
+.arrow-right{
+    width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  
+  border-left: 10px solid #CAEBF2;
+}
+
+.arrow-left {
+width: 0; 
+height: 0; 
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent; 
+
+border-right:10px solid white; 
+}
+
+.card{
+    background-color: inherit;
+}
+
+.report-title{
+    background-color: inherit;
+    width: 327px;
+    margin: 0 auto;
+}
+
+.report-details{
+    background-color: inherit;
+    border-bottom: 2px solid #CAEBF2;
+}
+
+.contentt{
+    background-color: inherit;
+}
+
+.add-comment{
+    width: 100%
+}
+
+.comment-div{
+    margin: 0 auto;
+    width: 327px;
+    margin-bottom: 20px;
+}
+
+.website-link {
+    color: #545454;
+    background-color: #CAEBF2;
+    padding: 0px 10px;
+ }
+
+ .website-li{
+     text-align: center;
+     margin: 3%;
+     width: 25%;
+ }
+
+ .website-list{
+     display: flex;
+     flex-wrap: wrap;
+ }
+
+ .website-title{
+     border-bottom: #FF3B3F solid 2px;
+     padding-bottom: 10px;
+}
+
+.website-content{
+    text-align: center;
+}
+
+.remove-button{
+    color: #FF3B3F;
+}
+
+.url-div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.submit-button{
+    margin-top: 20px;
+    margin-left: 33%;
 }

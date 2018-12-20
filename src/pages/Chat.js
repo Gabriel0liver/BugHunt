@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
-import hackerService from '../lib/hacker-service'
 import chatService from '../lib/chat-service'
 
 import socketManagerClient from "../socketManagerClient";
-import { format } from 'util';
 
 class Chat extends Component {
 
@@ -47,7 +44,6 @@ class Chat extends Component {
         this.setState({
           messageList
         })
-        console.log(this.state)
         if(this.messagesEnd !== null){
           this.messagesEnd.scrollIntoView();
         }
@@ -58,9 +54,9 @@ class Chat extends Component {
 
     const formatedMessages = this.state.messageList.map(message => {
       if(this.props.user.type === message.type){
-        return <li key={''+message.time} className="right-message">{message.text}</li>
+        return <div key={''+message.time} className="message-text right-message"><p className="text-message"  >{message.text}</p><div className="arrow-right"></div></div>
       }else{
-        return <li key={''+message.time} className="left-message">{message.text}</li>
+        return <div key={''+message.time} className="message-text left-message"><div className="arrow-left"></div><p className="text-message left"  >{message.text}</p></div>
       }
       
     })
@@ -69,17 +65,18 @@ class Chat extends Component {
 
     return (
       <div>
-        <div className="message-box">
-          <div>
+        <div>
+          <div  className="message-box">
           {formatedMessages}
-          </div>
           <div style={{ float:"left", clear: "both" }}
              ref={(el) => { this.messagesEnd = el; }}>
           </div>
+          </div>
+          
         </div>
-        <form onSubmit={this.handleSendMessage}>
-          <input type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
-          <input className="button" type="submit" value="Send" />
+        <form onSubmit={this.handleSendMessage} className="message-form">
+          <input autoComplete="off" className="input message-input" placeholder="Write a message" type="text" name="message" onChange={this.handleChange} value={this.state.message}/>
+          <input className="button message-button" type="submit" value="Send" />
         </form>
       </div>
     )

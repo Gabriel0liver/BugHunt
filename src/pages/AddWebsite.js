@@ -47,11 +47,11 @@ class AddWebsite extends Component {
         <form onSubmit={this.handleSubmit}>
         <div>
         	<label className="label">Title</label>
-        	<input className="input" type="text" name="title" value={title} onChange={this.handleChange}/>
+        	<input autoComplete="off" className="input" type="text" name="title" value={title} onChange={this.handleChange}/>
         </div>
         <div>
 					<label className="label">Url</label>
-        	<input className="input" type="text" name="url" value={url} onChange={this.handleChange}/>
+        	<input autoComplete="off" className="input" type="text" name="url" value={url} onChange={this.handleChange}/>
         </div>
         <input className="button" type="submit" value="Submit" />
 

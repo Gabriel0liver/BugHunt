@@ -14,7 +14,6 @@ class Report extends Component {
 	componentDidMount(){
 		reportService.getReport(this.props.match.params.id)
 			.then(response => {
-				console.log(response)
 				this.setState({
 					report: response
 				})
@@ -70,8 +69,11 @@ class Report extends Component {
 			switch(this.state.report.status){
 				case 'open':
 				return <div>
+					<div className="comment-div">
 					<label>Add a comment:</label>
-					<textarea onChange={this.handleChange} value={this.state.comment} name="comment"></textarea>
+					<textarea className="add-comment" rows="5" onChange={this.handleChange} value={this.state.comment} name="comment"></textarea>
+					</div>
+					
 					<div className="card-footer">
 						<div className="card-footer-item">
 							<button  className="button" onClick={this.handleClose}>Close report</button>
@@ -79,8 +81,6 @@ class Report extends Component {
 						<div className="card-footer-item">
 							<button className="button" onClick={this.handleReject}>Reject report</button>
 						</div>
-						
-						
 					</div>
 				</div>;
 				case 'closed':
@@ -96,13 +96,13 @@ class Report extends Component {
 	}
 
 	handleComment(){
-		if(this.state.report.comment === "" || this.state.report.comment === null){
+		if(this.state.report.comment === "" || this.state.report.comment === null || this.state.report.comment === undefined){
 			return
 		}else{
 			return <div>
 				<label>Comment from the dev:</label>
-				<div className="report-description">
-				<p>{this.state.report.comment}</p>
+			<div className="report-description">
+				<p className="contentt">{this.state.report.comment}</p>
 			</div>
 			</div> 
 			
@@ -117,16 +117,16 @@ class Report extends Component {
     return (
       <div className="card">
 				<header className="card-header title1">
-				<p className="title is-2">{report.title}</p>
+				<p className="title is-2 report-title">{report.title}</p>
 				</header>
 				<div className="card-content">
 					<label>Website: </label>
-					<p className="report-sub">{report.website}</p>
+					<p className="report-sub report-details">{report.website}</p>
 					<label>Report created by: </label>
-					<p className="report-sub">{report.hacker}</p>
+					<p className="report-sub report-details">{report.hacker}</p>
 					<label>Bug explanation:</label>
 					<div className="report-description">
-						<p className="content">{report.description}</p>
+						<p className="contentt">{report.description}</p>
 					</div>
 						{this.handleComment()}
 				</div>

@@ -35,7 +35,7 @@ class Login extends Component {
         <form onSubmit={this.handleFormSubmit}>
           < div>
             <label className="label">Username</label>
-            <input className="input" type="text" name="username" value={username} onChange={this.handleChange}/>
+            <input autoComplete="off" className="input" type="text" name="username" value={username} onChange={this.handleChange}/>
           </div>
           <div>
             <label className="label">Password</label>

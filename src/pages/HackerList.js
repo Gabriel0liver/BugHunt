@@ -44,26 +44,24 @@ class AllWebsites extends Component {
     }
   }
 
-  render() {
-
+  render() { 
     const searchFiltered = this.state.hackerList.filter(hacker => {
       return hacker.username.includes(this.state.search)
     })
 
     const hackerList = searchFiltered.map(hacker =>{
-      return <li key={hacker._id}><p>{hacker.username}</p><p onClick={() => {
+      return <div className="hacker-list-item" key={hacker._id}><p className="hacker-name">{hacker.username}</p><p className="openChat" onClick={() => {
         this.handleOpenChat(hacker._id)
-      }}>Open chat</p></li>
+      }}>Open chat</p></div>
     })
 
     return (
       <div>
-        <h1>hackers</h1>
-        <label>Search:</label>
-        <input type="text" name="search" onChange={this.handleChange} value={this.state.search}/>
-        <ul>
+        <h1>Hackers</h1>
+        <input autoComplete="off" className="input is-rounded" placeholder="Type to search for hackers..." type="text" name="search" onChange={this.handleChange} value={this.state.search}/>
+        <div className="hacker-list">
           {hackerList}
-        </ul>
+        </div>
         {this.handleRedirect()}
       </div>
     )

@@ -20,7 +20,6 @@ class Report {
   }
 
   getWebsite(websiteId){
-    console.log(websiteId)
     return this.auth.get('/websites/'+websiteId)
       .then(({data}) => data);
   }

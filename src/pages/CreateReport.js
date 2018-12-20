@@ -51,7 +51,7 @@ class CreateReport extends Component {
 	}
 
   render() {
-		const { title, dev, description, redirect, error } = this.state;
+		const { title, description, redirect, error } = this.state;
 		if (redirect) {
 			return (<Redirect to="/dashboard-hacker" />)
 		} 	
@@ -61,13 +61,13 @@ class CreateReport extends Component {
         <form onSubmit={this.handleSubmit}>
         <div>
         	<label className="label">Title</label>
-        	<input className="input" type="text" name="title" value={title} onChange={this.handleChange}/>
+        	<input autoComplete="off" className="input" type="text" name="title" value={title} onChange={this.handleChange}/>
         </div>
         <div>
 					<label className="label">Description</label>
         	<textarea className="textarea" type="textarea" name="description" rows="10" value={description} onChange={this.handleChange}/>
         </div>
-        <input className="button" type="submit" value="Submit" />
+        <input className="button submit-button" type="submit" value="Submit" />
 
 				<p className="alert">{error}</p>
 

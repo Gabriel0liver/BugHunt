@@ -20,7 +20,7 @@ class DevDashboard extends Component {
             Websites
           </p>
           <ul className="menu-list">
-          <Link to='/my-website'>My websites</Link>
+          <Link to='/websites'>My websites</Link>
           <Link to='/add-website'>Add a website</Link>
           </ul>
           <p className="menu-label">

@@ -38,11 +38,11 @@ class MyWebsites extends Component {
 		}
 		if(this.props.user.type === 'hacker'){
 			return <div>
-				<Link to={`/new-report/${this.props.match.params.id}`}>Create report</Link>
+				<Link className="button"to={`/new-report/${this.props.match.params.id}`}>Create report</Link>
 			</div>;
 		}else{
 			return <div>
-				<button onClick={this.handleRemove}>Remove website</button>
+				<button className="button remove-button" onClick={this.handleRemove}>Remove website</button>
 			</div>;
 		}
   }
@@ -51,9 +51,16 @@ class MyWebsites extends Component {
     const website = this.state.website
     return (
       <div>
-        <h1>{website.title}</h1>
-        <p>Url: {website.url}</p>
-        {this.handleUser()}
+        <h1 className="website-title">{website.title}</h1>
+        <div className="website-content">
+          <div className="url-div">
+          <label className="website-url">Url:</label>
+          <a href={'https://'+website.url}>{' '+website.url}</a>
+          </div>
+          {this.handleUser()}
+        </div>
+        
+        
       </div>
     )
   }

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
 class Home extends Component {
 
   render() {
     return (
-        <div>
+        <div className="home-div">
           <h1 className="title is-1">Bug Hunt</h1>
           <div className="description">
             <p>Bug hunt is a website with the purpose of making hackers and developers life easier.</p>
