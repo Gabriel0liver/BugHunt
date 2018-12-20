@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const socketURL = process.env.REACT_APP_API_URL;
+const socketURL = 'https://bughunt-website.herokuapp.com/';
 class SocketManagerClient {
   constructor(){
     this.socket='';
@@ -13,6 +13,7 @@ class SocketManagerClient {
   }
   initSocketUser = (chatId) => {
     this.socket = io(socketURL + '/' + chatId);
+    console.log(this.socket)
   }
 }
 
