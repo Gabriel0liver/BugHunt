@@ -46,7 +46,7 @@ class AllWebsites extends Component {
 
   render() { 
     const searchFiltered = this.state.hackerList.filter(hacker => {
-      return hacker.username.includes(this.state.search)
+      return hacker.username.toLowerCase().includes(this.state.search.toLowerCase())
     })
 
     const hackerList = searchFiltered.map(hacker =>{
