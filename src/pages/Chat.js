@@ -32,7 +32,9 @@ class Chat extends Component {
       .then((data) => {
         console.log(data)
         let newMessageList = this.state.messageList
+        console.log(this.state.messageList)
         newMessageList.push(data)
+        console.log(newMessageList)
         this.setState({
           message: "",
           messageList: newMessageList
