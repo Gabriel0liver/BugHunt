@@ -28,7 +28,7 @@ class Websites extends Component {
   render() {
 
     const searchFiltered = this.state.websiteList.filter(website => {
-      return website.title.includes(this.state.search.toLowerCase() || this.state.search.toUpperCase())
+      return website.title.toLowerCase().includes(this.state.search.toLowerCase())
     })
 
     const websiteList = searchFiltered.map(website =>{
