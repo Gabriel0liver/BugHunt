@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const socketURL = 'http://localhost:5000';
+const socketURL = process.env.REACT_APP_API_URL;
 class SocketManagerClient {
   constructor(){
     this.socket='';
