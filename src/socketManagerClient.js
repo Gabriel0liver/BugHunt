@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const socketURL = 'https://bughunt-website.herokuapp.com/';
+const socketURL = 'https://bughunt-website.herokuapp.com';
 class SocketManagerClient {
   constructor(){
     this.socket='';
